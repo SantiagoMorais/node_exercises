@@ -91,7 +91,43 @@ The try...catch block handles potential errors in the route. Upon passing all te
 
 It's possible to check if the code logic is correct using Thunder Client. It's just necessary to write the route and the method used on it to visualize the result.
 
-<img src="/src/assets/exercise-1/thunder-client.png" alt="thunder client window">
+![Thunder client window](/src/assets/exercise-1/thunder-client.png)
+
+**Exercise 2 - Creating a new endpoint to add new genders**
+
+The logical to check if the 'description' and 'name' are valid is already done. It's used the same of the **put** endpoint. So, it was just necessary to create de endpoint **post** to add it into the array 'genders'.
+
+```js
+    app.post("/genders", (req, res) => {
+        //rest of the code
+
+        try {
+            const nextId = genders.length.toString();
+
+            const newGender = {
+                id: nextId,
+                name,
+                description
+            };
+
+            genders.push(newGender);
+
+            res.status(200).json({
+                message: `Gênero '${name}' adicionado com sucesso!`,
+                newGender: newGender,
+                genders: genders
+            })
+        } catch (error) {
+            res.status(500).json({ 
+                message: "Não foi possível adicionar novo gênero.",
+                error: error
+            })
+        }
+    })
+```
+
+To be not necessary to add a new id for each new gender added to the database, we used the length of the array 'genders' to be the new id of each new gender.
+
 
 ### Continuous development
 

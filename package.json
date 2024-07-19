@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node --watch --no-warnings index.js"
+    "exercise-1": "node --watch --no-warnings exercise-1-put.js",
+    "exercise-2": "node --watch --no-warnings exercise-2-post.js"
   },
   "keywords": [],
   "author": "",
