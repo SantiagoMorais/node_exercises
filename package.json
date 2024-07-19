@@ -6,7 +6,9 @@
   "scripts": {
     "exercise-1": "node --watch --no-warnings exercise-1-put.js",
     "exercise-2": "node --watch --no-warnings exercise-2-post.js",
-    "exercise-3": "node --watch --no-warnings exercise-3-get.js"
+    "exercise-3": "node --watch --no-warnings exercise-3-get.js",
+    "exercise-4": "node --watch --no-warnings exercise-4-delete.js",
+    "exercise-5": "node --watch --no-warnings exercise-5-get.js"
   },
   "keywords": [],
   "author": "",

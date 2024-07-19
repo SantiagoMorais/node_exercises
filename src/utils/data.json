@@ -1,0 +1,48 @@
+{
+    "genders": [
+        {
+            "id": 0,
+            "name": "Animation",
+            "description": "A genre that includes films created through animation techniques, offering imaginative and visually unique storytelling."
+        },
+        {
+            "id": 1,
+            "name": "Adventure",
+            "description": "Films that focus on exciting journeys and heroic quests, often featuring exploration and thrilling escapades."
+        },
+        {
+            "id": 2,
+            "name": "Action",
+            "description": "A genre characterized by high-energy sequences, including physical stunts, chases, explosions, and intense battles."
+        }
+    ],
+    "movies": [
+        {
+            "id": 1,
+            "title": "How to Train Your Dragon",
+            "genre": "Animation",
+            "director": "Dean DeBlois",
+            "releaseDate": "2010-03-26",
+            "language": "English",
+            "duration": 98
+        },
+        {
+            "id": 2,
+            "title": "Jumanji: The Next Level",
+            "genre": "Adventure",
+            "director": "Jake Kasdan",
+            "releaseDate": "2019-12-13",
+            "language": "English",
+            "duration": 123
+        },
+        {
+            "id": 3,
+            "title": "Avengers: Endgame",
+            "genre": "Action",
+            "director": "Anthony Russo, Joe Russo",
+            "releaseDate": "2019-04-26",
+            "language": "English",
+            "duration": 181
+        }
+    ]
+}

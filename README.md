@@ -143,6 +143,78 @@ To list the genders, you need to use the **GET** endpoint and send the response 
     })
 ```
 
+**Exercise 4 - Creating a endpoint to delete a gender**
+
+To delete a gender fom the database it was used the id from **req.params**. A variable is used to check if the index used in the request body exist.
+If it's a valid id, it's returned a message and the new database updated.
+
+```js
+    app.delete("/genders/:id", (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const index = genders.findIndex(gender => gender.id === id);
+
+            if (index < 0 || index >= genders.length) {
+                return res.status(404).send("Gênero não encontrado.");
+            } else {
+                genders.splice(index, 1)
+
+                return res.status(200).json({
+                    message: "Gênero deletado com sucesso!",
+                    genders: genders
+                })
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Não foi possível deletar este gênero")
+        }
+    })
+```
+
+**Exercise 5 - To modify the endpoint to list the movies, its average duration and the number os total movies**
+
+Created a new list, in addition to the existing genders list, with some new information about each of them.
+
+```json
+{
+    "movies": [
+        {
+            "id": 1,
+            "title": "How to Train Your Dragon",
+            "genre": "Animation",
+            "director": "Dean DeBlois",
+            "releaseDate": "2010-03-26",
+            "language": "English",
+            "duration": 98
+        },
+    ]
+}
+```
+
+This way, you can calculate the number of movies in the array using the length method, compute the average duration of the movies by summing the total duration of all movies with the reduce method, and then divide this result by the number of movies.
+
+```js
+    app.get("/movies", (req, res) => {
+        const totalMovies = data.movies.length;
+        const totalDuration = data.movies.reduce((acc, item) => {
+            return acc + item.duration
+        }, 0);
+        const averageDuration = totalDuration / totalMovies;
+        
+        try {
+            res.status(200).json({
+                totalMovies: totalMovies,
+                averageDuration: averageDuration,
+                movies: data.movies
+            })
+
+        } catch (error) {
+            res.status(500).send("Erro ao listar todos os filmes.")
+        }
+    })
+```
+
 ### Continuous development
 
 

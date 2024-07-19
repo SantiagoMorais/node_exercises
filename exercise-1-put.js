@@ -1,5 +1,5 @@
 import express from "express"
-import { genders } from "./src/utils/data.js";
+import data from "./src/utils/data.json" assert { type: "json" };
 
 const app = express();
 app.use(express.json());
@@ -11,10 +11,10 @@ app.put('/genders/:id', (req, res) => {
 
     const noName = !name;
     const invalidName = typeof name !== "string" || !/^[a-zA-ZÀ-ú]+$/.test(name);
-    const duplicatedName = genders.some(item => item.name === name);
+    const duplicatedName = data.genders.some(item => item.name === name);
     const noDescription = !description;
     const invalidDescription = typeof (description) !== "string" || !/^[a-zA-ZÀ-ú\s,.!?-]+$/.test(description);
-    const invalidId = !id || typeof (updatedId) !== "number" || updatedId < 0 || updatedId >= genders.length;
+    const invalidId = !id || typeof (updatedId) !== "number" || updatedId < 0 || updatedId >= data.genders.length;
 
     switch (true) {
         case noName:
@@ -32,13 +32,13 @@ app.put('/genders/:id', (req, res) => {
     }
 
     try {
-        genders[id].name = name;
-        genders[id].description = description;
+        data.genders[id].name = name;
+        data.genders[id].description = description;
 
         res.status(200).json({
             message: "Gênero atualizado com sucesso",
-            genderUpdated: genders[id],
-            genders: genders
+            genderUpdated: data.genders[id],
+            genders: data.genders
         })
     } catch (error) {
         console.log(error);

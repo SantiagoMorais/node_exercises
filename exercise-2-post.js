@@ -1,5 +1,5 @@
 import express from "express"
-import { genders } from "./src/utils/data.js"
+import data from "./src/utils/data.json" assert { type: "json" };
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.post("/genders", (req, res) => {
 
     const noName = !name;
     const invalidName = typeof name !== "string" || !/^[a-zA-ZÀ-ú]+$/.test(name);
-    const duplicatedName = genders.some(item => item.name === name);
+    const duplicatedName = data.genders.some(item => item.name === name);
     const noDescription = !description;
     const invalidDescription = typeof (description) !== "string" || !/^[a-zA-ZÀ-ú\s,.!?-]+$/.test(description);
 
@@ -36,12 +36,12 @@ app.post("/genders", (req, res) => {
             description
         };
 
-        genders.push(newGender);
+        data.genders.push(newGender);
 
         res.status(200).json({
             message: `Gênero '${name}' adicionado com sucesso!`,
             newGender: newGender,
-            genders: genders
+            genders: data.genders
         })
     } catch (error) {
         console.log(error);
