@@ -41,10 +41,8 @@ app.put('/genders/:id', (req, res) => {
             genders: genders
         })
     } catch (error) {
-        res.status(500).json({
-            message: "Houve algum problema para atualizar o nome e descrição do gênero",
-            error: error
-        })
+        console.log(error);
+        res.status(500).send("Houve algum problema para atualizar o nome e descrição do gênero")
     }
 })
 

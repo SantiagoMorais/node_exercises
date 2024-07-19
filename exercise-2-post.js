@@ -44,10 +44,8 @@ app.post("/genders", (req, res) => {
             genders: genders
         })
     } catch (error) {
-        res.status(500).json({
-            message: "Não foi possível adicionar novo gênero.",
-            error: error
-        })
+        console.log(error);
+        res.status(500).send("Não foi possível adicionar novo gênero.");
     }
 })
 

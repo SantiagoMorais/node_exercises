@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "exercise-1": "node --watch --no-warnings exercise-1-put.js",
-    "exercise-2": "node --watch --no-warnings exercise-2-post.js"
+    "exercise-2": "node --watch --no-warnings exercise-2-post.js",
+    "exercise-3": "node --watch --no-warnings exercise-3-get.js"
   },
   "keywords": [],
   "author": "",

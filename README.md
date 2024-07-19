@@ -91,11 +91,11 @@ The try...catch block handles potential errors in the route. Upon passing all te
 
 It's possible to check if the code logic is correct using Thunder Client. It's just necessary to write the route and the method used on it to visualize the result.
 
-![Thunder client window](/src/assets/exercise-1/thunder-client.png)
+![Thunder client window](/src/assets/thunder-client.png)
 
 **Exercise 2 - Creating a new endpoint to add new genders**
 
-The logical to check if the 'description' and 'name' are valid is already done. It's used the same of the **put** endpoint. So, it was just necessary to create de endpoint **post** to add it into the array 'genders'.
+The logical to check if the 'description' and 'name' are valid is already done. It's used the same of the **PUT** endpoint. So, it was just necessary to create de endpoint **POST** to add it into the array 'genders'.
 
 ```js
     app.post("/genders", (req, res) => {
@@ -128,6 +128,20 @@ The logical to check if the 'description' and 'name' are valid is already done. 
 
 To be not necessary to add a new id for each new gender added to the database, we used the length of the array 'genders' to be the new id of each new gender.
 
+**Exercise 3 - Creating a endpoint to list all genders**
+
+To list the genders, you need to use the **GET** endpoint and send the response to the user using the **send** method. If the request is successful, the user will be able to see the list of genders. However, if something goes wrong, an error message will be returned, and the error details will be displayed in the terminal.
+
+```js
+    app.get("/genders", (req, res) => {
+        try {
+            res.status(200).send(genders)
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Não foi possível carregar os gêneros do banco de dados.")
+        }
+    })
+```
 
 ### Continuous development
 
